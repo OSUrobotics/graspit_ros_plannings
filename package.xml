@@ -1,0 +1,45 @@
+<package>
+  <name>graspit_ros_planning</name>
+  <version>1.0.0</version>
+  <description>
+
+    ROS interface to GraspIt! exposing a number of services such as
+    loading objects or obstacles into the GraspIt! world, or performing
+    graspl planning or testing for the PR2 gripper. Originally
+    developped to serve the needs of the probabilistic_grasp_planner
+    node and project; can serve as an example of how to use GraspIt!
+    from within ROS.
+
+    Updated to the catkin build system and the most recent revision of GraspIt!
+
+  </description>
+  <author>Matei Ciocarlie</author>
+  <maintainer email="cartejac@oregonstate.edu" >Jackson Carter</maintainer>
+  <license>BSD</license>
+ 
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>manipulation_msgs</build_depend>
+  <build_depend>graspit-ros</build_depend>
+  <build_depend>graspit_ros_planning_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>manipulation_msgs</run_depend>
+  <run_depend>graspit-ros</run_depend>
+  <run_depend>graspit_ros_planning_msgs</run_depend>
+
+  <export>
+    <!--<cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lros_graspit_interface"/>-->
+  </export>
+
+</package>
+
+
