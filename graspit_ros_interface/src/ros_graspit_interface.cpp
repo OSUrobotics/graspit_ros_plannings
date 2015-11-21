@@ -54,6 +54,7 @@
 #include <sensor_msgs/point_cloud_conversion.h>
 
 #include <iostream>
+#include <string.h>
 using std::cout;
 using std::endl;
 
@@ -410,7 +411,46 @@ bool RosGraspitInterface::clearBodiesCB(graspit_ros_planning_msgs::ClearBodies::
 	cout << "\tBody 1:" << collision_report[i].first << endl;
 	cout << "\tBody 2:" << collision_report[i].second  <<  endl;
   }
-	
+
+  
+  Robot *robot1 = world->getRobot(0);
+
+  int numchains = robot1->getNumChains(); 
+
+  cout << "There are: " << numchains << " kin chains." << endl;
+
+  KinematicChain *chain1 = robot1->getChain(0); 
+
+  int numjoints = chain1->getNumJoints();
+
+  double myjointvals[numjoints];
+
+  memset(myjointvals,0,sizeof(double)*numjoints); 
+
+  chain1->getJointValues(myjointvals);
+
+  cout << "Joint values: " << endl;
+
+  for(i=0;i<numjoints;i++)
+  {
+	cout << "Joint: " << i << " : " <<  myjointvals[i] << endl;
+  }
+ 
+  cout << "-----------------------------break----------------------------" << endl;
+
+  std::vector<position> Geometry; 
+
+  cur_body->getGeometryVertices(&Geometry);  
+
+  cout << "verticies: " << endl; 
+
+  int geosize = Geometry.size();
+
+  for(i=0;i<geosize;i++){
+  	cout << Geometry[i] << endl;
+
+  }
+
   
   ROS_INFO("collisions report complete!" );   
 

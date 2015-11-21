@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(graspit_ros_planning)
+project(graspit_ros_interface)
 
 find_package(catkin REQUIRED COMPONENTS
 	roscpp
