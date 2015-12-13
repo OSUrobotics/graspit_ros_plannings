@@ -21,6 +21,7 @@ add_service_files(
 	GenerateGrasp.srv
 	LoadObstacle.srv
 	TestGrasp.srv
+        LoadRobot.srv
 )
 
 generate_messages(

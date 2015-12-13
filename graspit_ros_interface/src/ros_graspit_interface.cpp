@@ -52,6 +52,7 @@
 
 #include <sensor_msgs/PointCloud.h>
 #include <sensor_msgs/point_cloud_conversion.h>
+#include <ros/package.h>
 
 #include <iostream>
 using std::cout;
@@ -224,6 +225,12 @@ int RosGraspitInterface::init(int argc, char **argv)
   test_grasp_srv_ = priv_nh_->advertiseService("test_grasp", &RosGraspitInterface::testGraspCB, this);
   grasp_planning_srv_ = priv_nh_->advertiseService("grasp_planning", &RosGraspitInterface::graspPlanningCB, this);
 
+  // Changes made by Saurabh
+  load_robot_srv_ = priv_nh_->advertiseService("load_robot", &RosGraspitInterface::loadGripper, this);
+  //
+  //
+  
+  
   generate_grasp_srv_ = priv_nh_->advertiseService("generate_grasp", &RosGraspitInterface::generateGraspCB, this);
 
   scan_publisher_ = priv_nh_->advertise<sensor_msgs::PointCloud2> ("simulated_scans", 5);
@@ -1357,6 +1364,17 @@ bool RosGraspitInterface::graspPlanningCB(manipulation_msgs::GraspPlanning::Requ
           response.grasps.push_back(grasp);
         }
 
+  return true;
+}
+
+bool RosGraspitInterface::loadGripper(graspit_ros_planning_msgs::LoadRobot::Request &req,
+                                      graspit_ros_planning_msgs::LoadRobot::Response &res)
+{
+  World *world = graspItGUI->getIVmgr()->getWorld();
+ 
+  std::string *robot_path = new std::string("/home/saurabh/catkin_ws/src/graspit-ros/graspit/graspit_source/models/" + req.model_path);
+  
+  world->importRobot(QString(robot_path->c_str()));
   return true;
 }
 

@@ -61,6 +61,7 @@ class GraspableBody;
 #include "graspit_ros_planning_msgs/TestGrasp.h"
 #include "graspit_ros_planning_msgs/GenerateGrasp.h"
 #include "graspit_ros_planning_msgs/VerifyGrasp.h"
+#include "graspit_ros_planning_msgs/LoadRobot.h"
 
 namespace graspit_ros_planning
 {
@@ -112,6 +113,10 @@ private:
   //! Server for the grasp collision checking service
   ros::ServiceServer verify_grasp_srv_;
 
+
+  //! Server for loading the robot in graspit
+  ros::ServiceServer load_robot_srv_;
+
   //! Publisher for simulated scans
   ros::Publisher scan_publisher_;
 
@@ -134,6 +139,10 @@ private:
 
   //! Loads the gripper info from its file, if not already loaded
   bool loadGripper();
+
+  // load the specific gripper type
+  bool loadGripper(graspit_ros_planning_msgs::LoadRobot::Request &req,
+                    graspit_ros_planning_msgs::LoadRobot::Response &res);
 
   // ------------------------- helper functions for grasp tests ---------------------------
 

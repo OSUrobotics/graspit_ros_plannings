@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 2.8.3)
 project(graspit_ros_interface)
 
 find_package(catkin REQUIRED COMPONENTS
-	roscpp
+	roslib
+        roscpp
 	rospy
 	std_msgs
 	sensor_msgs
@@ -48,6 +49,7 @@ add_library(graspit_ros_plugin
 	src/main.cpp
 )
 target_link_libraries(graspit_ros_plugin ${catkin_LIBRARIES} ${QT_LIBRARIES})
+set_target_properties(graspit_ros_plugin PROPERTIES COMPILE_FLAGS "-Wall -g")
 
 #############
 ## Install ##

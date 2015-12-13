@@ -28,6 +28,8 @@
   <build_depend>graspit-ros</build_depend>
   <build_depend>graspit_ros_planning_msgs</build_depend>
   <run_depend>roscpp</run_depend>
+  <build_depend>roslib</build_depend>
+  <run_depend>roslib</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>geometry_msgs</run_depend>
